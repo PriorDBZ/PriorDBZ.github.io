@@ -444,6 +444,98 @@ h1::after {
   width: 6px;
 }
 
+/* Styles mobiles */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .page-header {
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  #back-config {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .card {
+    padding: 0.8rem;
+  }
+
+  .card-cat {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .card-model, .card-price {
+    font-size: 0.9rem;
+  }
+
+  .generator-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .generator button {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .profile-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .profile-row button {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-width: none;
+    padding: 1.5rem;
+  }
+
+  .modal-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-content button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    margin-right: 0.3rem;
+  }
+
+  #delete-confirm button {
+    margin: 0 0.3rem;
+  }
+
+  .total-section {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+}
+
 .card textarea::-webkit-scrollbar-track {
   background: rgba(5, 5, 15, 0.9);
   border-radius: 10px;
