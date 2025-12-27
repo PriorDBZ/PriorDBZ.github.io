@@ -62,6 +62,7 @@ document.getElementById('confirm-load').addEventListener('click', () => {
   const data = profiles[profileName];
   if (!data) return;
   fillFormFromData(data);
+  localStorage.setItem('lastLoadedProfile', profileName); // Sauvegarder le dernier chargé
   document.getElementById('load-modal').style.display = 'none';
   document.getElementById('output').value = JSON.stringify(data, null, 2);
 });
@@ -344,18 +345,21 @@ document.querySelectorAll('.clear-component').forEach(btn => {
 
 // Aller à la page d'index EN SAUVEGARDANT d'abord
 document.getElementById('go-index').addEventListener('click', () => {
-  const data = buildDataFromForm();                 // récupère la config actuelle
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); // sauvegarde [file:272][web:129][web:140]
-  window.location.href = '../index.html';             // puis redirige
+  const data = buildDataFromForm();
+  const profiles = getProfiles();
+  profiles['default'] = data; // Sauvegarder comme profil default
+  saveProfiles(profiles);
+  localStorage.setItem('lastLoadedProfile', 'default'); // Marquer comme dernier chargé
+  window.location.href = '../index.html';
 });
 // Au chargement de preconfig.html : recharger la config sauvegardée
 window.addEventListener('DOMContentLoaded', () => {
-  populateProfileSelect();
-  // Charger le profil 'default' si existe
+  populateLoadSelect();
+  // Charger le dernier profil chargé ou 'default'
+  const lastProfile = localStorage.getItem('lastLoadedProfile') || 'default';
   const profiles = getProfiles();
-  if (profiles['default']) {
-    fillFormFromData(profiles['default']);
-    document.getElementById('profile-name').value = 'default';
-    document.getElementById('output').value = JSON.stringify(profiles['default'], null, 2);
+  if (profiles[lastProfile]) {
+    fillFormFromData(profiles[lastProfile]);
+    document.getElementById('output').value = JSON.stringify(profiles[lastProfile], null, 2);
   }
 });
