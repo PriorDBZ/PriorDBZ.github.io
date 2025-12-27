@@ -27,7 +27,6 @@ document.getElementById('confirm-save').addEventListener('click', () => {
   const profiles = getProfiles();
   profiles[profileName] = data;
   saveProfiles(profiles);
-  alert(`Configuration sauvegardée dans le profil "${profileName}".`);
   document.getElementById('save-modal').style.display = 'none'; // Masquer après sauvegarde
   document.getElementById('save-profile-name').value = ''; // Vider le champ
 });
@@ -57,7 +56,6 @@ document.getElementById('confirm-load').addEventListener('click', () => {
   const select = document.getElementById('load-profile-select');
   const profileName = select.value;
   if (!profileName) {
-    alert('Veuillez sélectionner un profil.');
     return;
   }
   const profiles = getProfiles();
@@ -78,16 +76,32 @@ document.getElementById('delete-profile').addEventListener('click', () => {
   const select = document.getElementById('load-profile-select');
   const profileName = select.value;
   if (!profileName) {
-    alert('Veuillez sélectionner un profil à supprimer.');
     return;
   }
-  if (!confirm(`Êtes-vous sûr de vouloir supprimer le profil "${profileName}" ?`)) return;
+  select.disabled = true;
+  document.getElementById('load-buttons').style.display = 'none';
+  document.getElementById('delete-confirm').style.display = 'block';
+});
+
+// Bouton: confirmer la suppression
+document.getElementById('confirm-delete').addEventListener('click', () => {
+  const select = document.getElementById('load-profile-select');
+  const profileName = select.value;
   const profiles = getProfiles();
   delete profiles[profileName];
   saveProfiles(profiles);
   populateLoadSelect(); // Actualiser la liste
-  alert(`Profil "${profileName}" supprimé.`);
   select.value = '';
+  select.disabled = false;
+  document.getElementById('load-buttons').style.display = 'block';
+  document.getElementById('delete-confirm').style.display = 'none';
+});
+
+// Bouton: annuler la suppression
+document.getElementById('cancel-delete').addEventListener('click', () => {
+  document.getElementById('load-profile-select').disabled = false;
+  document.getElementById('load-buttons').style.display = 'block';
+  document.getElementById('delete-confirm').style.display = 'none';
 });
 
 // Fermer la modal en cliquant en dehors
@@ -293,10 +307,8 @@ document.getElementById('upload-json').addEventListener('change', (event) => {
       const output = document.getElementById('output');
       if (output) output.value = JSON.stringify(data, null, 2);
 
-      alert('Configuration importée et sauvegardée.');
     } catch (err) {
       console.error(err);
-      alert('Fichier JSON invalide.');
     }
   };
   

@@ -37,10 +37,15 @@
             <option value="">Sélectionner un profil</option>
           </select>
         </label>
-        <div style="margin-top:1rem;">
+        <div id="load-buttons" style="margin-top:1rem;">
           <button id="confirm-load">Charger</button>
           <button id="delete-profile">Supprimer</button>
           <button id="cancel-load">Annuler</button>
+        </div>
+        <div id="delete-confirm" style="display:none; margin-top:1rem; text-align:center;">
+          <p style="color:#ff007a; font-weight:bold;">Êtes-vous sûr de vouloir supprimer ce profil ?</p>
+          <button id="confirm-delete">Oui</button>
+          <button id="cancel-delete">Non</button>
         </div>
       </div>
     </div>

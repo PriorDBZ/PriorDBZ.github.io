@@ -435,6 +435,10 @@ h1::after {
   margin-right: 0.5rem;
 }
 
+#delete-confirm button {
+  margin: 0 0.5rem;
+}
+
 /* Scrollbar custom textarea */
 .card textarea::-webkit-scrollbar {
   width: 6px;
