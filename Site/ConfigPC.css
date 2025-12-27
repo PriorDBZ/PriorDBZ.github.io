@@ -1,0 +1,363 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  color: #f5f5f5;
+  background:
+    radial-gradient(circle at top left, rgba(255, 0, 128, 0.18), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(0, 255, 204, 0.16), transparent 55%),
+    linear-gradient(135deg, #05030d, #060612 40%, #040716 80%);
+}
+
+/* Titre générique (preconfig) */
+h1 {
+  text-align: center;
+  padding: 1.5rem 1rem 0.5rem;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fdfdfd;
+  text-shadow:
+    0 0 8px rgba(0, 255, 204, 0.6),
+    0 0 18px rgba(255, 0, 128, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 3px;
+  margin: 0.75rem auto 0;
+  background: linear-gradient(90deg, #ff007a, #ffe600, #00ffd5);
+  box-shadow: 0 0 12px rgba(0, 255, 213, 0.7);
+}
+
+/* Header index : titre vraiment centré, bouton indépendant */
+.page-header {
+  position: relative;
+  max-width: 1100px;
+  margin: 1.2rem auto 0.5rem;
+  padding: 0 1.2rem;
+}
+
+/* Titre au centre de la zone, sans influence du bouton */
+.page-title {
+  text-align: center;
+  padding: 0.5rem 0 0.5rem;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fdfdfd;
+  text-shadow:
+    0 0 8px rgba(0, 255, 204, 0.6),
+    0 0 18px rgba(255, 0, 128, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.page-title::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 3px;
+  margin: 0.5rem auto 0;
+  background: linear-gradient(90deg, #ff007a, #ffe600, #00ffd5);
+  box-shadow: 0 0 12px rgba(0, 255, 213, 0.7);
+}
+
+/* Bouton back positionné par-dessus, à gauche, en absolu */
+#back-config {
+  position: absolute;
+  left: 1.2rem;            /* même padding que le container */
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff007a, #00ffd5);
+  color: #05030d;
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+
+
+/* Grille de cartes (préconfig & index) */
+.grid {
+  max-width: 1200px;
+  margin: 1.2rem auto 3rem;
+  padding: 0 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+/* Cartes */
+.card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(10, 10, 26, 0.92), rgba(12, 5, 32, 0.9));
+  border-radius: 14px;
+  padding: 1rem;
+  border: 1px solid rgba(0, 255, 213, 0.15);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 14px 30px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out,
+    border-color 0.18s ease-out;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(0, 255, 213, 0.7);
+  box-shadow:
+    0 0 18px rgba(0, 255, 213, 0.65),
+    0 22px 40px rgba(0, 0, 0, 0.9);
+}
+
+.card img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: radial-gradient(circle at center, #1b1630 0, #05030f 70%);
+  margin-bottom: 0.5rem;
+}
+
+.card-cat {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  padding: 0.18rem 0.5rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  color: #00ffd5;
+  border: 1px solid rgba(0, 255, 213, 0.35);
+  background: radial-gradient(circle at top left, rgba(0, 255, 213, 0.24), rgba(3, 8, 20, 0.9));
+}
+
+.card-model {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.card-price {
+  font-weight: 600;
+  color: #ffe600;
+  text-shadow: 0 0 6px rgba(255, 230, 0, 0.7);
+}
+
+/* Formulaire preconfig */
+.card label {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.card input,
+.card textarea {
+  width: 100%;
+  margin-top: 0.18rem;
+  padding: 0.35rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 255, 213, 0.35);
+  background-color: rgba(5, 5, 15, 0.9);
+  color: #f5f5f5;
+  font-size: 0.85rem;
+}
+
+.card textarea {
+  min-height: 60px;
+  resize: none;
+}
+
+/* Barre de boutons preconfig (haut) */
+.generator {
+  max-width: 1100px;
+  margin: 1.2rem auto 0.2rem;
+  padding: 0 1.2rem;
+}
+
+.generator-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.generator button {
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff007a, #00ffd5);
+  color: #05030d;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Bouton index sous les cartes (preconfig) */
+.generator-index {
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+  padding: 0 1.2rem;
+}
+
+.generator-index button {
+  width: 100%;
+  padding: 0.65rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #00ffd5, #ff007a);
+  color: #05030d;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Total config (index) */
+.total-section {
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+  padding: 0 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.total-section span:first-child {
+  opacity: 0.85;
+}
+
+#total-display {
+  font-weight: 600;
+  color: #ffe600;
+}
+
+/* Modal (index) */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  background: radial-gradient(circle at top, rgba(10, 255, 196, 0.18), rgba(0, 0, 0, 0.96));
+  z-index: 50;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 720px;
+  width: 100%;
+  padding: 1.6rem 1.4rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(9, 9, 26, 0.98), rgba(20, 8, 40, 0.96));
+  border: 1px solid rgba(0, 255, 213, 0.4);
+  box-shadow:
+    0 0 24px rgba(0, 255, 213, 0.6),
+    0 26px 60px rgba(0, 0, 0, 0.95);
+}
+
+.modal-content h2 {
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ff007a;
+}
+
+.modal-content img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: radial-gradient(circle at center, #1d1236, #05030f 75%);
+  margin-bottom: 0.9rem;
+}
+
+.modal-model {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.modal-price {
+  color: #ffe600;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.modal-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #d6d6e8;
+  border-left: 2px solid rgba(0, 255, 213, 0.55);
+  padding-left: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.modal-content a {
+  color: #00ffd5;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px dashed rgba(0, 255, 213, 0.7);
+}
+
+.modal-content a:hover {
+  color: #ffe600;
+  border-color: rgba(255, 230, 0, 0.9);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  border: none;
+  background: transparent;
+  color: #ff4b9a;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* Scrollbar custom textarea */
+.card textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card textarea::-webkit-scrollbar-track {
+  background: rgba(5, 5, 15, 0.9);
+  border-radius: 10px;
+}
+
+.card textarea::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ffd5, #ff007a);
+  border-radius: 10px;
+}
+
+.card textarea::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffe600, #ff007a);
+}
+
+/* Firefox */
+.card textarea {
+  scrollbar-width: thin;
+  scrollbar-color: #00ffd5 rgba(5, 5, 15, 0.9);
+}
+
+textarea {
+  resize: none;
+}

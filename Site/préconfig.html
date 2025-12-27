@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Préconfiguration PC</title>
+  <link rel="stylesheet" href="ConfigPC.css" />
+  <link rel="icon" type="image/jpeg" href="logo.png">
+
+</head>
+<body>
+  <h1>Préconfigurer les composants</h1>
+
+  <!-- Boutons en haut, alignés à gauche -->
+  <section class="generator">
+    <div class="generator-row">
+      <button id="save" title="Sauvegarde la configuration dans le navigateur">
+        💾 Save Config
+      </button>
+
+      <button id="load" title="Recharge la dernière configuration sauvegardée dans le navigateur">
+        🔎 Load Config
+      </button>
+
+      <button id="download-json" title="Télécharge la configuration actuelle dans un fichier .json">
+        ⬇️ Download Config .json
+      </button>
+
+      <button id="upload-json-btn" title="Importe une configuration depuis un fichier .json">
+        ⬆️ Upload Config .json
+      </button>
+    </div>
+
+    <!-- éléments cachés utilisés par le JS -->
+    <input type="file" id="upload-json" accept=".json,application/json" style="display:none;">
+    <textarea id="output" rows="14" style="display:none;"></textarea>
+  </section>
+
+  <!-- Sélecteurs de composants -->
+  <main class="grid">
+    <!-- CPU -->
+    <section class="card">
+      <h2 class="card-cat">Processeur</h2>
+
+      <label>Nom du modèle
+        <input type="text" id="cpu-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="cpu-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="cpu-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="cpu-link">
+      </label>
+
+      <label>Description
+        <textarea id="cpu-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- GPU -->
+    <section class="card">
+      <h2 class="card-cat">Carte graphique</h2>
+
+      <label>Nom du modèle
+        <input type="text" id="gpu-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="gpu-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="gpu-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="gpu-link">
+      </label>
+
+      <label>Description
+        <textarea id="gpu-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- RAM -->
+    <section class="card">
+      <h2 class="card-cat">Mémoire RAM</h2>
+
+      <label>Nom du modèle
+        <input type="text" id="ram-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="ram-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="ram-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="ram-link">
+      </label>
+
+      <label>Description
+        <textarea id="ram-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Carte mère -->
+    <section class="card">
+      <h2 class="card-cat">Carte mère</h2>
+
+      <label>Nom du modèle
+        <input type="text" id="mb-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="mb-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="mb-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="mb-link">
+      </label>
+
+      <label>Description
+        <textarea id="mb-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Stockage -->
+    <section class="card">
+      <h2 class="card-cat">Stockage</h2>
+
+      <label>Nom du modèle
+        <input type="text" id="stor-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="stor-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="stor-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="stor-link">
+      </label>
+
+      <label>Description
+        <textarea id="stor-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Alimentation -->
+    <section class="card">
+      <h2 class="card-cat">Alimentation</h2>
+
+      <label>Nom du modèle
+        <input type="text" id="psu-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="psu-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="psu-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="psu-link">
+      </label>
+
+      <label>Description
+        <textarea id="psu-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Boîtier -->
+    <section class="card">
+      <h2 class="card-cat">Boîtier</h2>
+
+      <label>Nom du modèle
+        <input type="text" id="case-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="case-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="case-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="case-link">
+      </label>
+
+      <label>Description
+        <textarea id="case-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Refroidissement -->
+    <section class="card">
+      <h2 class="card-cat">Refroidissement</h2>
+
+      <label>Nom du modèle
+        <input type="text" id="cooler-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="cooler-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="cooler-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="cooler-link">
+      </label>
+
+      <label>Description
+        <textarea id="cooler-desc"></textarea>
+      </label>
+    </section>
+  </main>
+
+  <!-- Bouton index en dessous des sélecteurs -->
+  <section class="generator-index">
+    <button id="go-index" title="Ouvre la page d'affichage de la configuration">
+      ✅ Aller à la page de presentation
+    </button>
+  </section>
+
+  <script src="preconfig.js"></script>
+</body>
+</html>
