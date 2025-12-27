@@ -349,7 +349,7 @@ document.getElementById('go-index').addEventListener('click', () => {
   const profiles = getProfiles();
   profiles['default'] = data; // Sauvegarder comme profil default
   saveProfiles(profiles);
-  localStorage.setItem('lastLoadedProfile', 'default'); // Marquer comme dernier chargé
+  // Ne pas changer lastLoaded, garder le dernier sélectionné par l'utilisateur
   window.location.href = '../index.html';
 });
 // Au chargement de preconfig.html : recharger la config sauvegardée
@@ -362,4 +362,27 @@ window.addEventListener('DOMContentLoaded', () => {
     fillFormFromData(profiles[lastProfile]);
     document.getElementById('output').value = JSON.stringify(profiles[lastProfile], null, 2);
   }
+
+  // Gestion du bouton flottant
+  const updateFloatingBtn = () => {
+    const normalBtn = document.getElementById('go-index');
+    const rect = normalBtn.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    const fixedBtn = document.getElementById('go-index-fixed');
+    fixedBtn.style.opacity = isVisible ? '0' : '1';
+    fixedBtn.style.pointerEvents = isVisible ? 'none' : 'auto';
+  };
+
+  window.addEventListener('scroll', updateFloatingBtn);
+  updateFloatingBtn(); // Initial check
 });
+
+// Bouton flottant
+function goToIndex() {
+  const data = buildDataFromForm();
+  const profiles = getProfiles();
+  profiles['default'] = data;
+  saveProfiles(profiles);
+  // Ne pas changer lastLoaded
+  window.location.href = '../index.html';
+}
