@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Préconfiguration PC</title>
+  <link rel="stylesheet" href="ConfigPC.css" />
+  <link rel="icon" type="image/jpeg" href="logo.png">
+</head>
+
+<header class="page-header">
+    <img src="logo.png" alt="Logo du site" class="site-logo">
+    <button id="back-config">Choisir les composants</button>
+    <h1 class="page-title">Configuration PC Gamer</h1>
+</header>
+
+<body>
+  <!-- Boutons en haut, alignés à gauche -->
+  <section class="generator">
+    <div class="generator-row">
+    </div>
+
+    <!-- Sélection du profil -->
+    <div class="profile-row">
+      <button id="load-profile" title="Ouvrir le menu des profils">📂 Load Profile</button>
+      <button id="save-profile-btn" title="Ouvrir le menu de sauvegarde">💾 Save Profile</button>
+    </div>
+
+    <!-- Modal de chargement -->
+    <div id="load-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <h3>Charger un profil</h3>
+        <label>Choisir un profil
+          <select id="load-profile-select">
+            <option value="">Sélectionner un profil</option>
+          </select>
+        </label>
+        <div id="load-buttons" style="margin-top:1rem;">
+          <button id="confirm-load">Charger</button>
+          <button id="delete-profile">Supprimer</button>
+          <button id="upload-json-btn" title="Charger une configuration à partir d'un fichier JSON">
+            Charger à partir d'un JSON
+          </button>
+          <button id="cancel-load">Annuler</button>
+        </div>
+        <div id="delete-confirm" style="display:none; margin-top:1rem; text-align:center;">
+          <p style="color:#ff007a; font-weight:bold;">Êtes-vous sûr de vouloir supprimer ce profil ?</p>
+          <button id="confirm-delete">Oui</button>
+          <button id="cancel-delete">Non</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de sauvegarde -->
+    <div id="save-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <h3>Sauvegarder le profil</h3>
+        <label>Nom du profil
+          <input type="text" id="save-profile-name" placeholder="Entrez un nom de profil">
+        </label>
+        <div style="margin-top:1rem;">
+          <button id="confirm-save">Confirmer</button>
+          <button id="download-json" title="Exporter la configuration actuelle dans un fichier JSON">
+            Exporter en JSON
+          </button>
+          <button id="cancel-save">Annuler</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- éléments cachés utilisés par le JS -->
+    <input type="file" id="upload-json" accept=".json,application/json" style="display:none;">
+    <textarea id="output" rows="14" style="display:none;"></textarea>
+  </section>
+
+  <!-- Sélecteurs de composants -->
+  <main class="grid preconfig-grid">
+    <!-- CPU -->
+    <section class="card">
+      <h2 class="card-cat">Processeur</h2>
+      <button class="clear-component" data-component="cpu">Vider</button>
+
+      <label>Nom du modèle
+        <input type="text" id="cpu-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="cpu-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="cpu-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="cpu-link">
+      </label>
+
+      <label>Description
+        <textarea id="cpu-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- GPU -->
+    <section class="card">
+      <h2 class="card-cat">Carte graphique</h2>
+      <button class="clear-component" data-component="gpu">Vider</button>
+
+      <label>Nom du modèle
+        <input type="text" id="gpu-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="gpu-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="gpu-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="gpu-link">
+      </label>
+
+      <label>Description
+        <textarea id="gpu-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- RAM -->
+    <section class="card">
+      <h2 class="card-cat">Mémoire RAM</h2>
+      <button class="clear-component" data-component="ram">Vider</button>
+
+      <label>Nom du modèle
+        <input type="text" id="ram-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="ram-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="ram-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="ram-link">
+      </label>
+
+      <label>Description
+        <textarea id="ram-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Carte mère -->
+    <section class="card">
+      <h2 class="card-cat">Carte mère</h2>
+      <button class="clear-component" data-component="motherboard">Vider</button>
+
+      <label>Nom du modèle
+        <input type="text" id="mb-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="mb-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="mb-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="mb-link">
+      </label>
+
+      <label>Description
+        <textarea id="mb-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Stockage -->
+    <section class="card">
+      <h2 class="card-cat">Stockage</h2>
+      <button class="clear-component" data-component="storage">Vider</button>
+
+      <label>Nom du modèle
+        <input type="text" id="stor-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="stor-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="stor-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="stor-link">
+      </label>
+
+      <label>Description
+        <textarea id="stor-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Alimentation -->
+    <section class="card">
+      <h2 class="card-cat">Alimentation</h2>
+      <button class="clear-component" data-component="psu">Vider</button>
+
+      <label>Nom du modèle
+        <input type="text" id="psu-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="psu-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="psu-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="psu-link">
+      </label>
+
+      <label>Description
+        <textarea id="psu-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Boîtier -->
+    <section class="card">
+      <h2 class="card-cat">Boîtier</h2>
+      <button class="clear-component" data-component="pcCase">Vider</button>
+
+      <label>Nom du modèle
+        <input type="text" id="case-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="case-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="case-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="case-link">
+      </label>
+
+      <label>Description
+        <textarea id="case-desc"></textarea>
+      </label>
+    </section>
+
+    <!-- Refroidissement -->
+    <section class="card">
+      <h2 class="card-cat">Refroidissement</h2>
+      <button class="clear-component" data-component="cooler">Vider</button>
+
+      <label>Nom du modèle
+        <input type="text" id="cooler-name">
+      </label>
+
+      <label>Prix (€)
+        <input type="number" id="cooler-price" step="0.01">
+      </label>
+
+      <label>URL de l'image
+        <input type="url" id="cooler-image">
+      </label>
+
+      <label>Lien du produit
+        <input type="url" id="cooler-link">
+      </label>
+
+      <label>Description
+        <textarea id="cooler-desc"></textarea>
+      </label>
+    </section>
+  </main>
+
+  <!-- Bouton index en dessous des sélecteurs -->
+  <section class="generator-index">
+    <button id="go-index" title="Ouvre la page d'affichage de la configuration">
+      ✅ Aller à la page de presentation
+    </button>
+  </section>
+
+  <script src="preconfig.js"></script>
+
+  <!-- Bouton flottant -->
+  <button id="go-index-fixed" class="floating-btn" title="Ouvre la page d'affichage de la configuration" style="opacity:0; pointer-events:none;" onclick="goToIndex()">
+    ✅ Aller à la présentation
+  </button>
+</body>
+</html>

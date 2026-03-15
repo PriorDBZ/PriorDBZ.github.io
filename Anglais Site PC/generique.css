@@ -1,0 +1,58 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(Image/backgroundcolor.jpg);
+    background-size: cover;
+}
+
+body>* {
+    width: 60%;
+    
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: olivedrab;
+}
+
+h2 {
+    font-size: 40px;
+    color: violet;
+}
+
+p {
+    font-size: 30px;
+    color: blueviolet;
+}
+
+.Image {
+    width: 100%;
+}
+
+.banner {
+    border-radius: 5%;
+    margin: 1%;
+}
+.title-bar{
+    margin: 0 auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    width: 100%;
+    text-align: center;
+    padding: 8px 0;
+    background:#290739;
+    color:#fff;
+    border-radius:4px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.25);
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Configuration PC Gamer</title>
+  <link rel="stylesheet" href="Site/ConfigPC.css" />
+  <link rel="icon" type="image/jpeg" href="Site/logo.png">
+</head>
+<body>
+  <header class="page-header">
+    <img src="Site/logo.png" alt="Logo du site" class="site-logo">
+    <button id="back-config">Choisir les composants</button>
+    <h1 class="page-title">Configuration PC Gamer</h1>
+</header>
+
+
+  <main class="grid">
+    <!-- CPU -->
+    <article class="card" data-component="cpu">
+      <img src="" alt="CPU" class="card-img">
+      <div class="card-cat">Processeur</div>
+      <div class="card-model"></div>
+      <div class="card-price"></div>
+    </article>
+
+    <!-- GPU -->
+    <article class="card" data-component="gpu">
+      <img src="" alt="GPU" class="card-img">
+      <div class="card-cat">Carte graphique</div>
+      <div class="card-model"></div>
+      <div class="card-price"></div>
+    </article>
+
+    <!-- RAM -->
+    <article class="card" data-component="ram">
+      <img src="" alt="RAM" class="card-img">
+      <div class="card-cat">Mémoire RAM</div>
+      <div class="card-model"></div>
+      <div class="card-price"></div>
+    </article>
+
+    <!-- Carte mère -->
+    <article class="card" data-component="motherboard">
+      <img src="" alt="Carte mère" class="card-img">
+      <div class="card-cat">Carte mère</div>
+      <div class="card-model"></div>
+      <div class="card-price"></div>
+    </article>
+
+    <!-- Stockage -->
+    <article class="card" data-component="storage">
+      <img src="" alt="Stockage" class="card-img">
+      <div class="card-cat">Stockage</div>
+      <div class="card-model"></div>
+      <div class="card-price"></div>
+    </article>
+
+    <!-- Alimentation -->
+    <article class="card" data-component="psu">
+      <img src="" alt="Alimentation" class="card-img">
+      <div class="card-cat">Alimentation</div>
+      <div class="card-model"></div>
+      <div class="card-price"></div>
+    </article>
+
+    <!-- Boîtier -->
+    <article class="card" data-component="pcCase">
+      <img src="" alt="Boîtier" class="card-img">
+      <div class="card-cat">Boîtier</div>
+      <div class="card-model"></div>
+      <div class="card-price"></div>
+    </article>
+
+    <!-- Refroidissement -->
+    <article class="card" data-component="cooler">
+      <img src="" alt="Refroidissement" class="card-img">
+      <div class="card-cat">Refroidissement</div>
+      <div class="card-model"></div>
+      <div class="card-price"></div>
+    </article>
+  </main>
+
+  <div id="no-config-message" style="display:none; text-align:center; margin:2rem; color:#00ffd5; font-size:1.2rem;">
+    Aucune configuration trouvée. <a href="Site/préconfig.html" style="color:#ff007a;">Créer une config</a>
+  </div>
+
+  <section class="total-section">
+    <span>Total configuration :</span>
+    <span id="total-display">—</span>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h2 id="modal-cat"></h2>
+      <img src="" alt="" id="modal-img">
+      <div class="modal-model" id="modal-model"></div>
+      <div class="modal-price" id="modal-price"></div>
+      <p class="modal-desc" id="modal-desc"></p>
+      <a href="#" target="_blank" id="modal-link">Voir le produit</a>
+    </div>
+  </div>
+
+  <script src="Site/index.js"></script>
+</body>
+</html>

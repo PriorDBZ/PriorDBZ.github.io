@@ -1,0 +1,17 @@
+
+header ul {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5%;
+    background-image: url(Image/headerbg.jpg);
+}
+
+header .categorie {
+    font-size: 25px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: olive;
+}
+
+.logo > *{
+    width: 200px;
+    position: fixed; top: 0; left: 0;  }
